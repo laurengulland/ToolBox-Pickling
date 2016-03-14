@@ -2,7 +2,7 @@
 
 from os.path import exists
 import sys
-from pickle import dump, load
+import pickle 
 
 def update_counter(file_name, reset=False):
 	""" Updates a counter stored in the file 'file_name'
@@ -29,7 +29,21 @@ def update_counter(file_name, reset=False):
 	>>> update_counter('blah2.txt')
 	2
 	"""
-	pass
+	if exists(file_name) and reset==False:
+		f = open(file_name, 'r+')
+		f_read = f.read()
+		current = int(pickle.loads(f_read))
+		current +=1
+		f.seek(0,0)
+		pickle.dump(current, f)
+		f.close()
+	else:
+		f = open(file_name, 'w')
+		current = 1
+		pickle.dump(current, f)
+		f.close()
+	return current
+
 
 if __name__ == '__main__':
 	if len(sys.argv) < 2:
