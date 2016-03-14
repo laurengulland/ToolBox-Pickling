@@ -26,7 +26,21 @@ def update_counter(file_name, reset=False):
 	1
 	>>> update_counter('blah.txt')
 	3
-	>>> update_counter('blah2.txt')
+	>>> update_counter('blah.txt')
+	4
+	>>> update_counter('blah.txt')
+	5
+	>>> update_counter('blah.txt')
+	6
+	>>> update_counter('blah.txt')
+	7
+	>>> update_counter('blah.txt')
+	8
+	>>> update_counter('blah.txt')
+	9
+	>>> update_counter('blah.txt') #included to test two digit case
+	10
+	>>> update_counter('blah2.txt') 
 	2
 	"""
 	if exists(file_name) and reset==False:
